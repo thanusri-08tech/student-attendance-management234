@@ -1,0 +1,187 @@
+{
+  "info": {
+    "name": "Student Attendance Management API",
+    "description": "Postman collection for the Student Attendance Management System backend (Django REST Framework). Base URL: http://127.0.0.1:8000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "student_id",
+      "value": "1"
+    },
+    {
+      "key": "attendance_id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Asha Rao\",\n  \"roll_no\": \"CSE001\",\n  \"department\": \"CSE\",\n  \"email\": \"asha.rao@example.com\",\n  \"year\": 2,\n  \"section\": \"A\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/students/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "students", ""]
+            }
+          }
+        },
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/students/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "students", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Student",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/students/{{student_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "students", "{{student_id}}", ""]
+            }
+          }
+        },
+        {
+          "name": "Update Student",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"section\": \"B\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/students/{{student_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "students", "{{student_id}}", ""]
+            }
+          }
+        },
+        {
+          "name": "Delete Student",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/students/{{student_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "students", "{{student_id}}", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Create Attendance",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"student\": {{student_id}},\n  \"date\": \"2026-09-12\",\n  \"status\": \"Present\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/attendance/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", ""]
+            }
+          }
+        },
+        {
+          "name": "Get All Attendance",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/attendance/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", ""]
+            }
+          }
+        },
+        {
+          "name": "Get Attendance By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/attendance/{{attendance_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "{{attendance_id}}", ""]
+            }
+          }
+        },
+        {
+          "name": "Update Attendance",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Absent\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/attendance/{{attendance_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "{{attendance_id}}", ""]
+            }
+          }
+        },
+        {
+          "name": "Delete Attendance",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{base_url}}/api/attendance/{{attendance_id}}/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "attendance", "{{attendance_id}}", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/dashboard/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "dashboard", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
